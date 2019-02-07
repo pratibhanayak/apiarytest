@@ -1,0 +1,81 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# MyHelloWorldApp
+
+My first hello world test App.
+
+## Questions Collection [/questions]
+
+### List All Hellos [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "question": "Hello in different languages",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "language":  "French" ,                 
+                        "choice": "Bonjour",
+                        "votes": 2048
+                    }, {
+                        "language":  "German"  ,
+                        "choice": "Hallo",
+                        "votes": 1024
+                    }, {
+                        "language":  "Hindi",
+                        "choice": "Namaste",
+                        "votes": 512
+                    }, {
+                        "language":  "English"  ,
+                        "choice": "Hello",
+                        "votes": 256
+                    }
+                ]
+            }
+        ]
+
+### Add a new Language [POST]
+
+You can add a new language and its hello transaltion to it.
++ Request (application/json)
+
+        {
+            "question": "Which Language",
+            "choices": [
+                "Swift",
+                "Python",
+                "Objective-C",
+                "Ruby"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
+                    }
+                ]
+            }
